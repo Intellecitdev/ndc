@@ -1,0 +1,322 @@
+{
+ "purchase_orders": [
+  {
+   "id": 1,
+   "po_no": "PO000001/2026-2027",
+   "date": "2026-10-12",
+   "unit": "ITDTE",
+   "supplier_id": 1,
+   "financial_year_id": 1,
+   "reference_no": "132456",
+   "priority": 3,
+   "comments": null,
+   "created_by": "Shamimul Haque",
+   "created_at": "2026-10-12 08:27:00",
+   "items": [
+    {
+     "item_id": 1,
+     "qty": 2
+    },
+    {
+     "item_id": 5,
+     "qty": 1
+    }
+   ]
+  },
+  {
+   "id": 2,
+   "po_no": "PO000002/2026-2027",
+   "date": "2026-10-12",
+   "unit": "NDC",
+   "supplier_id": 1,
+   "financial_year_id": 1,
+   "reference_no": "12345",
+   "priority": 3,
+   "comments": null,
+   "created_by": "Administrator",
+   "created_at": "2026-10-12 08:51:00",
+   "items": [
+    {
+     "item_id": 13,
+     "qty": 5
+    },
+    {
+     "item_id": 14,
+     "qty": 3
+    }
+   ]
+  },
+  {
+   "id": 3,
+   "po_no": "PO000003/2026-2027",
+   "date": "2026-10-12",
+   "unit": "NDC",
+   "supplier_id": 5,
+   "financial_year_id": 1,
+   "reference_no": "132",
+   "priority": 3,
+   "comments": null,
+   "created_by": "Administrator",
+   "created_at": "2026-10-12 09:19:00",
+   "items": [
+    {
+     "item_id": 13,
+     "qty": 2
+    }
+   ]
+  },
+  {
+   "id": 4,
+   "po_no": "PO000004/2026-2027",
+   "date": "2026-10-13",
+   "unit": "NDC",
+   "supplier_id": 2,
+   "financial_year_id": 1,
+   "reference_no": "12345",
+   "priority": 3,
+   "comments": null,
+   "created_by": "Administrator",
+   "created_at": "2026-10-13 10:53:00",
+   "items": [
+    {
+     "item_id": 7,
+     "qty": 4
+    }
+   ]
+  }
+ ],
+ "receives": [
+  {
+   "id": 1,
+   "invoice_no": "12345",
+   "date": "2026-10-12",
+   "unit": "NDC",
+   "po_id": 2,
+   "supplier_id": 1,
+   "received_qty": 4,
+   "created_by": "Administrator",
+   "created_at": "2026-10-12 08:56:00",
+   "items": [
+    {
+     "code": "ITM-0013",
+     "qty": 1,
+     "serial": "111",
+     "stock_id": 1,
+     "type": "Warranty",
+     "start": "2026-10-01",
+     "end": "2027-10-01",
+     "duration": 1,
+     "duration_type": "Years"
+    },
+    {
+     "code": "ITM-0013",
+     "qty": 1,
+     "serial": "222",
+     "stock_id": 2,
+     "type": "Warranty",
+     "start": "2026-10-01",
+     "end": "2027-10-01",
+     "duration": 1,
+     "duration_type": "Years"
+    },
+    {
+     "code": "ITM-0013",
+     "qty": 1,
+     "serial": "333",
+     "stock_id": 3,
+     "type": "Warranty",
+     "start": "2026-10-01",
+     "end": "2027-10-01",
+     "duration": 1,
+     "duration_type": "Years"
+    },
+    {
+     "code": "ITM-0013",
+     "qty": 1,
+     "serial": "444",
+     "stock_id": 4,
+     "type": "Warranty",
+     "start": "2026-10-01",
+     "end": "2027-10-01",
+     "duration": 1,
+     "duration_type": "Years"
+    }
+   ]
+  },
+  {
+   "id": 2,
+   "invoice_no": "123456",
+   "date": "2026-10-12",
+   "unit": "NDC",
+   "po_id": 3,
+   "supplier_id": 5,
+   "received_qty": 2,
+   "created_by": "Administrator",
+   "created_at": "2026-10-12 09:19:00",
+   "items": [
+    {
+     "code": "ITM-0013",
+     "qty": 1,
+     "serial": "1234",
+     "stock_id": 6,
+     "type": "Warranty",
+     "start": "2026-10-12",
+     "end": "2027-10-12",
+     "duration": 1,
+     "duration_type": "Years"
+    },
+    {
+     "code": "ITM-0013",
+     "qty": 1,
+     "serial": "1235",
+     "stock_id": 7,
+     "type": "Warranty",
+     "start": "2026-10-12",
+     "end": "2027-10-12",
+     "duration": 1,
+     "duration_type": "Years"
+    }
+   ]
+  },
+  {
+   "id": 3,
+   "invoice_no": "1234",
+   "date": "2026-10-13",
+   "unit": "NDC",
+   "po_id": 4,
+   "supplier_id": 2,
+   "received_qty": 4,
+   "created_by": "Administrator",
+   "created_at": "2026-10-13 10:55:00",
+   "items": [
+    {
+     "code": "ITM-0007",
+     "qty": 1,
+     "serial": "12345",
+     "stock_id": 8,
+     "type": "Warranty",
+     "start": "2026-10-14",
+     "end": "2027-10-14",
+     "duration": 1,
+     "duration_type": "Years"
+    },
+    {
+     "code": "ITM-0007",
+     "qty": 1,
+     "serial": "2345",
+     "stock_id": 9,
+     "type": "Warranty",
+     "start": "2026-10-14",
+     "end": "2027-10-14",
+     "duration": 1,
+     "duration_type": "Years"
+    },
+    {
+     "code": "ITM-0007",
+     "qty": 1,
+     "serial": "3456",
+     "stock_id": 10,
+     "type": "Warranty",
+     "start": "2026-10-14",
+     "end": "2027-10-14",
+     "duration": 1,
+     "duration_type": "Years"
+    },
+    {
+     "code": "ITM-0007",
+     "qty": 1,
+     "serial": "5678",
+     "stock_id": 11,
+     "type": "Warranty",
+     "start": "2026-10-14",
+     "end": "2027-10-14",
+     "duration": 1,
+     "duration_type": "Years"
+    }
+   ]
+  }
+ ],
+ "stocks": [
+  {
+   "id": 11,
+   "serial": "5678",
+   "qty": 1,
+   "status": "In Stock",
+   "registered_by": "Administrator"
+  },
+  {
+   "id": 10,
+   "serial": "3456",
+   "qty": 1,
+   "status": "In Stock",
+   "registered_by": "Administrator"
+  },
+  {
+   "id": 9,
+   "serial": "2345",
+   "qty": 1,
+   "status": "In Stock",
+   "registered_by": "Administrator"
+  },
+  {
+   "id": 8,
+   "serial": "12345",
+   "qty": 1,
+   "status": "In Stock",
+   "registered_by": "Administrator"
+  },
+  {
+   "id": 7,
+   "serial": "1235",
+   "qty": 1,
+   "status": "In Stock",
+   "registered_by": "Administrator"
+  },
+  {
+   "id": 6,
+   "serial": "1234",
+   "qty": 1,
+   "status": "In Stock",
+   "registered_by": "Administrator"
+  },
+  {
+   "id": 3,
+   "serial": "333",
+   "qty": 1,
+   "status": "In Stock",
+   "registered_by": "Administrator"
+  },
+  {
+   "id": 2,
+   "serial": "222",
+   "qty": 1,
+   "status": "In Stock",
+   "registered_by": "Administrator"
+  },
+  {
+   "id": 1,
+   "serial": "111",
+   "qty": 1,
+   "status": "In Stock",
+   "registered_by": "Administrator"
+  }
+ ],
+ "issue_vouchers": [
+  {
+   "ref_id": 11,
+   "iv_no": "IV-00000001",
+   "date": "2026-10-12",
+   "issued_by": "Administrator",
+   "from_unit": "NDC",
+   "created_at": "2026-10-12 09:04:00",
+   "items": [
+    {
+     "serial": "444",
+     "qty": 1,
+     "to_unit": "9 division",
+     "status": "Pending"
+    }
+   ]
+  }
+ ]
+}

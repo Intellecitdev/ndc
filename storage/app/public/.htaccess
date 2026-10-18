@@ -1,0 +1,15 @@
+# Uploaded files (served as /public/storage/...).
+# Never run scripts from here, never list folders, and keep private uploads off the web:
+# ticket attachments and PO scan copies are served by the app (/attachments/...) after permission checks.
+Options -Indexes -ExecCGI
+
+<FilesMatch "(?i)\.(php\d?|phtml|phar|pht|pl|py|cgi|sh|asp|aspx|jsp|shtml)$">
+    Require all denied
+</FilesMatch>
+
+<IfModule mod_mime.c>
+    RemoveHandler .php .php3 .php4 .php5 .php7 .php8 .phtml .phar .pht
+    RemoveType .php .php3 .php4 .php5 .php7 .php8 .phtml .phar .pht
+</IfModule>
+
+RedirectMatch 404 "/storage/(tickets|purchase-orders)/"

@@ -1,0 +1,260 @@
+﻿@import 'tailwindcss';
+@import '@fontsource/poppins/400.css';
+@import '@fontsource/poppins/500.css';
+@import '@fontsource/montserrat/700.css';
+@import '@fortawesome/fontawesome-free/css/all.min.css';
+@import 'bootstrap-icons/font/bootstrap-icons.min.css';
+@import 'flatpickr/dist/flatpickr.min.css';
+@import 'tom-select/dist/css/tom-select.default.min.css';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+/*
+ | Theme tokens copied from the reference AdminLTE build
+ | (army = custom brand colour of the old system).
+ */
+@theme {
+    --font-sans: Arial, sans-serif;
+    --font-poppins: 'Poppins', sans-serif;
+    --font-montserrat: 'Montserrat', sans-serif;
+
+    --color-army: rgb(111 120 68);
+    --color-army-dark: rgb(61 66 29);
+    --color-army-sidebar: #1b2412;
+    --color-olive: #646400;
+    --color-olive-dark: #494900;
+    --color-olive-light: #bcbf4b;
+
+    --color-bs-primary: #0d6efd;
+    --color-bs-secondary: #6c757d;
+    --color-bs-success: #198754;
+    --color-bs-info: #0dcaf0;
+    --color-bs-warning: #ffc107;
+    --color-bs-danger: #dc3545;
+    --color-bs-light: #f8f9fa;
+    --color-bs-dark: #212529;
+    --color-bs-body: #212529;
+    --color-bs-border: #dee2e6;
+    --color-bs-tertiary: #f8f9fa;
+    --color-darkblue: darkblue;
+    --color-link: rgb(131 153 31);
+    --color-link-hover: rgb(111 120 68);
+}
+
+[x-cloak] { display: none !important; }
+
+@layer base {
+    html { font-size: 16px; }
+    body { @apply font-sans text-bs-body bg-bs-tertiary; line-height: 1.5; }
+    a { color: var(--color-link); text-decoration: underline; }
+    a:hover { color: var(--color-link-hover); }
+    h3 { @apply text-[1.75rem] font-medium leading-[1.2]; }
+    p { margin-bottom: 1rem; }
+}
+
+@layer components {
+    /* ---------- Buttons (Bootstrap 5) ---------- */
+    .btn { @apply no-underline inline-flex items-center justify-center gap-1 rounded-md border border-transparent px-3 py-1.5 text-base leading-normal font-normal no-underline transition-colors duration-150 cursor-pointer select-none disabled:opacity-65 disabled:pointer-events-none; }
+    .btn-sm { @apply px-2 py-1 text-[.775rem] leading-[1.5] rounded; }
+    .btn-xs { @apply px-1.5 py-0.5 text-xs rounded; }
+    .btn-primary { @apply bg-bs-primary border-bs-primary text-white hover:bg-[#0b5ed7]; }
+    .btn-secondary { @apply bg-bs-secondary border-bs-secondary text-white hover:bg-[#5c636a]; }
+    .btn-success { @apply bg-bs-success border-bs-success text-white hover:bg-[#157347]; }
+    .btn-info { @apply bg-bs-info border-bs-info text-black hover:bg-[#31d2f2]; }
+    .btn-warning { @apply bg-bs-warning border-bs-warning text-black hover:bg-[#ffca2c]; }
+    .btn-danger { @apply bg-bs-danger border-bs-danger text-white hover:bg-[#bb2d3b]; }
+    .btn-dark { @apply bg-bs-dark border-bs-dark text-white hover:bg-[#424649]; }
+    .btn-light { @apply bg-bs-light border-bs-light text-black hover:bg-[#d3d4d5]; }
+    .btn-army { @apply bg-army border-army text-white hover:bg-army-dark; }
+    .btn-default { @apply bg-[#f8f9fa] border-[#ddd] text-[#444] hover:bg-[#e9ecef]; }
+    .btn-flat { @apply rounded-none shadow-none; }
+    .btn-outline-primary { @apply border-bs-primary text-bs-primary hover:bg-bs-primary hover:text-white; }
+    .btn-outline-secondary { @apply border-bs-secondary text-bs-secondary hover:bg-bs-secondary hover:text-white; }
+
+    /* ---------- Forms ---------- */
+    .form-label { @apply mb-2 inline-block; }
+    .form-control, .form-select { @apply block w-full rounded-md border border-bs-border bg-white px-3 py-1.5 text-base leading-normal text-bs-body outline-none transition focus:border-[#86b7fe] focus:ring-4 focus:ring-[#0d6efd40] disabled:bg-[#e9ecef]; }
+    .form-control-sm, .form-select-sm { @apply px-2 py-1 text-sm rounded; }
+    /* select2 look of the reference: 36px high, small solid caret */
+    .form-select { @apply h-9 appearance-none bg-no-repeat py-1 pr-8; background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 5'%3e%3cpath fill='%23888' d='M0 0h8L4 5z'/%3e%3c/svg%3e"); background-position: right .6rem center; background-size: 8px 5px; }
+    .form-select:disabled { @apply cursor-default text-bs-secondary; }
+    /* select2-style grey placeholder while the empty option is chosen */
+    .form-select:has(> option[value=""]:checked) { color: #999; }
+    .form-select option { color: var(--color-bs-body, #212529); }
+    .is-invalid { @apply border-bs-danger; }
+    .invalid-feedback { @apply mt-1 text-sm text-bs-danger; }
+    .form-check-input { @apply h-4 w-4 rounded border-bs-border accent-bs-primary; }
+
+    /* ---------- Cards ---------- */
+    .card { @apply relative mb-4 flex min-w-0 flex-col rounded-md border border-black/[.175] bg-white break-words shadow-[0_0_1px_rgba(0,0,0,.125),0_1px_3px_rgba(0,0,0,.2)]; }
+    .card-header { @apply flex items-center border-b border-black/[.175] bg-transparent px-2 py-[.3rem] rounded-t-md; }
+    .card-title { @apply m-0 text-[1.1rem] leading-[1.2] font-normal; }
+    .card-tools { @apply ml-auto flex items-center gap-1; }
+    .card-body { @apply flex-auto px-2 py-[.3rem]; }
+    .card-footer { @apply border-t border-black/[.175] bg-[rgba(33,37,41,.03)] px-2 rounded-b-md; }
+    .card-army > .card-header, .card-outline-army { @apply bg-army-sidebar text-white; }
+
+    /* ---------- Tables ---------- */
+    .table { @apply mb-0 w-full border-collapse align-top text-black; }
+    .table th, .table td { @apply border-b border-bs-border bg-white p-1 align-middle; }
+    .table thead th { @apply align-bottom font-bold; }
+    .table-sm th, .table-sm td { @apply px-1 py-1; }
+    .table-bordered th, .table-bordered td { @apply border border-bs-border; }
+    .table-borderless th, .table-borderless td { @apply border-0 bg-transparent; }
+    .table-striped tbody tr:nth-of-type(odd) > * { @apply bg-black/[.05]; }
+    .table-hover tbody tr:hover > * { @apply bg-black/[.075]; }
+    .table-army thead th, thead.table-army th { @apply bg-army text-white; }
+    .table-responsive { @apply overflow-x-auto; }
+
+    /* ---------- Badges ---------- */
+    .badge { @apply inline-block rounded-md px-[0.65em] py-[0.35em] text-[0.75em] leading-none font-bold whitespace-nowrap text-center align-baseline; }
+    .text-bg-primary { @apply bg-bs-primary text-white; }
+    .text-bg-secondary { @apply bg-bs-secondary text-white; }
+    .text-bg-success { @apply bg-bs-success text-white; }
+    .text-bg-info { @apply bg-bs-info text-black; }
+    .text-bg-warning { @apply bg-bs-warning text-black; }
+    .text-bg-danger { @apply bg-bs-danger text-white; }
+    .text-bg-dark { @apply bg-bs-dark text-white; }
+    .text-bg-army { @apply bg-army text-white; }
+
+    /* ---------- Text colours used by the reference ---------- */
+    .text-primary { @apply text-bs-primary; }
+    .text-secondary { @apply text-bs-secondary; }
+    .text-success { @apply text-bs-success; }
+    .text-info { @apply text-bs-info; }
+    .text-warning { @apply text-bs-warning; }
+    .text-danger { @apply text-bs-danger; }
+    .text-dark { @apply text-bs-dark; }
+    .text-green { color: green; }
+    .text-darkblue { color: darkblue; }
+
+    /* ---------- AdminLTE info-box ---------- */
+    .info-box { @apply mb-4 flex min-h-20 w-full rounded-md bg-white p-2 shadow-[0_0_1px_rgba(61,66,29,.2),0_1px_3px_rgba(61,66,29,.3)] transition-colors duration-300; }
+    .info-box-icon { @apply flex w-[70px] items-center justify-center rounded-md text-[1.875rem] leading-[1.5]; }
+    .info-box-content { @apply flex flex-1 flex-col justify-center px-2.5 leading-[1.8]; }
+    .info-box-text { @apply block overflow-hidden text-ellipsis whitespace-nowrap; }
+    .info-box-number { @apply block font-bold; }
+    .info-box-link { @apply block text-inherit no-underline; }
+    /* Icon tile (dashboard boxes, header): white glyph on a gradient of --tile. */
+    .info-box-tile, .header-tile {
+        @apply relative flex items-center justify-center overflow-hidden text-white;
+        background: linear-gradient(135deg, color-mix(in srgb, var(--tile) 62%, white), var(--tile) 55%, color-mix(in srgb, var(--tile) 80%, black));
+        box-shadow: 0 8px 18px -6px color-mix(in srgb, var(--tile) 70%, transparent), inset 0 1px 0 rgb(255 255 255 / .35);
+    }
+    .info-box-tile::after, .header-tile::after { content: ''; @apply absolute -right-3 -top-3 h-9 w-9 rounded-full bg-white/20; }
+    .info-box-tile i, .header-tile i { @apply relative z-1 drop-shadow-[0_1px_1px_rgba(0,0,0,.25)]; }
+    .info-box-tile { @apply h-14 w-14 rounded-2xl text-[1.6rem]; }
+    .header-tile { @apply h-9 w-9 rounded-xl text-[.95rem] transition-transform duration-200; }
+    .header-tile::after { @apply -right-2.5 -top-2.5 h-6 w-6; }
+    a:hover > .header-tile { @apply -translate-y-px scale-105; }
+    /* Count badge pinned to the tile's corner. */
+    .header-badge { @apply absolute -right-0.5 top-0 z-2 min-w-[18px] rounded-full px-1 py-0.5 text-center text-[.62rem] leading-none font-bold ring-2 ring-white; }
+    .info-box-link:hover .info-box { background-color: #e8ecf1; }
+
+    /* ---------- Header dropdowns ---------- */
+    .dropdown-menu { @apply absolute right-0 z-50 mt-0.5 min-w-[280px] max-w-[300px] rounded-md border border-black/15 bg-white py-2 text-base shadow-lg; }
+    .dropdown-item { @apply block w-full px-4 py-1 text-bs-body no-underline whitespace-normal hover:bg-[#e9ecef]; }
+    .dropdown-header { @apply block px-4 py-2 text-center text-sm text-bs-secondary; }
+    .dropdown-footer { @apply text-center text-sm; }
+    .dropdown-divider { @apply my-2 h-0 border-t border-black/15; }
+    .navbar-badge { @apply absolute right-[5px] top-[9px] px-1 py-0.5 text-[.6rem] font-light; }
+
+    /* ---------- Modal ---------- */
+    .modal-content { @apply relative flex w-full flex-col rounded-lg border border-black/20 bg-white shadow-lg; }
+    .modal-header { @apply flex items-center justify-between border-b border-bs-border p-4; }
+    .modal-title { @apply m-0 text-xl font-medium leading-normal; }
+    .modal-body { @apply relative flex-auto p-4; }
+    .modal-footer { @apply flex flex-wrap items-center justify-end gap-2 border-t border-bs-border p-3; }
+    .btn-close { @apply h-4 w-4 cursor-pointer border-0 bg-transparent p-1 text-xl leading-none opacity-50 hover:opacity-75; }
+
+    /* ---------- Breadcrumb ---------- */
+    .breadcrumb { @apply flex flex-wrap items-center text-base; }
+    .breadcrumb-item + .breadcrumb-item { @apply pl-2; }
+    .breadcrumb-item + .breadcrumb-item::before { content: '/'; @apply pr-2 text-bs-secondary; }
+    .breadcrumb-item.active { @apply text-bs-secondary; }
+    .breadcrumb-item a { @apply no-underline; }
+
+    /* ---------- Alerts ---------- */
+    .alert { @apply relative mb-4 rounded-md border px-4 py-3; }
+    .alert-success { @apply border-[#a3cfbb] bg-[#d1e7dd] text-[#0a3622]; }
+    .alert-danger { @apply border-[#f1aeb5] bg-[#f8d7da] text-[#58151c]; }
+    .alert-warning { @apply border-[#ffe69c] bg-[#fff3cd] text-[#664d03]; }
+    .alert-info { @apply border-[#9eeaf9] bg-[#cff4fc] text-[#055160]; }
+
+    /* ---------- Sidebar (AdminLTE dark) ---------- */
+    .sidebar-menu .nav-link { @apply relative mb-[0.1rem] flex items-center rounded-md px-4 py-2 text-[#c2c7d0] no-underline whitespace-nowrap hover:bg-white/10 hover:text-white; }
+    .sidebar-menu .nav-link.active, .sidebar-menu .nav-link.open-parent { @apply bg-white/10 text-white; }
+    .sidebar-menu .nav-link p { @apply m-0 inline pl-2; }
+    .sidebar-menu .nav-icon { @apply flex min-w-6 max-w-6 items-center justify-center; }
+}
+
+/* ---------- Pagination (Laravel bootstrap-5 view) ---------- */
+.pagination { @apply flex flex-wrap pl-0; }
+.page-item .page-link { @apply relative block border border-bs-border bg-white px-3 py-1.5 text-bs-primary no-underline -ml-px hover:bg-[#e9ecef]; }
+.page-item:first-child .page-link { @apply ml-0 rounded-l-md; }
+.page-item:last-child .page-link { @apply rounded-r-md; }
+.page-item.active .page-link { @apply z-10 border-bs-primary bg-bs-primary text-white; }
+.page-item.disabled .page-link { @apply pointer-events-none text-bs-secondary; }
+.pagination-sm .page-link { @apply px-2 py-1 text-sm; }
+
+/* ---------- Login page (colorlib "login100" look from the reference) ---------- */
+@keyframes anim-shadow {
+    to { box-shadow: 0 0 70px 25px; opacity: 0; }
+}
+.input100:focus + .focus-input100 { animation: anim-shadow .5s ease-in-out forwards; }
+.input100:focus + .focus-input100 + .symbol-input100 { color: var(--color-olive-light); padding-left: 28px; }
+
+@media print {
+    .no-print { display: none !important; }
+}
+
+/* ---------- Tom Select styled like the reference select2 ---------- */
+.ts-wrapper.form-select { padding: 0 !important; border: 0 !important; background-image: none !important; height: auto; box-shadow: none !important; }
+.ts-wrapper .ts-control { min-height: 2.25rem; border: 1px solid var(--color-bs-border); border-radius: .375rem; padding: .25rem 2rem .25rem .75rem; font-size: 1rem; box-shadow: none; background: #fff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 5'%3e%3cpath fill='%23888' d='M0 0h8L4 5z'/%3e%3c/svg%3e") no-repeat right .6rem center / 8px 5px !important; }
+.ts-wrapper.single .ts-control::after { display: none; }
+.ts-wrapper.focus .ts-control { border-color: #86b7fe; box-shadow: 0 0 0 .25rem #0d6efd40; }
+.ts-dropdown { font-size: 1rem; }
+
+/* ---------- Bootstrap-like file input ---------- */
+input[type=file].form-control { padding: 0; overflow: hidden; }
+input[type=file].form-control::file-selector-button { margin: 0 .75rem 0 0; padding: .375rem .75rem; border: 0; border-right: 1px solid var(--color-bs-border); background: #f8f9fa; color: #212529; cursor: pointer; }
+input[type=file].form-control:hover::file-selector-button { background: #e9ecef; }
+
+/*
+ | Light polish of the new version: same layout and colours as the reference,
+ | only softer surfaces, army-tinted accents and gentle interaction feedback.
+ */
+@layer components {
+    .card { @apply rounded-lg border-black/[.08] shadow-[0_1px_2px_rgba(27,36,18,.06),0_2px_6px_rgba(27,36,18,.08)]; }
+    .card-header { @apply rounded-t-lg bg-[#fafbf7] py-[.45rem]; }
+    .card-title { @apply font-medium text-[#2b301a]; }
+    .card-footer { @apply rounded-b-lg; }
+
+    .table thead th, .table thead td { @apply bg-[#f2f4ec] text-[#2b301a]; }
+    .table-striped tbody tr:hover > * { @apply bg-army/[.08]; }
+    .table td, .table th { @apply transition-colors duration-100; }
+
+    .btn { @apply transition-[background-color,box-shadow,transform] active:translate-y-px focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-army/30; }
+    .btn-success, .btn-primary, .btn-warning, .btn-danger, .btn-info, .btn-secondary, .btn-dark { @apply shadow-[0_1px_2px_rgba(0,0,0,.12)]; }
+
+    .form-control:focus, .form-select:focus { border-color: rgb(111 120 68 / .7); box-shadow: 0 0 0 .2rem rgb(111 120 68 / .2); }
+
+    .sidebar-menu .nav-link.active { @apply shadow-[inset_3px_0_0_var(--color-olive-light)]; }
+    .sidebar-menu .nav-link { @apply transition-colors duration-150; }
+
+    .info-box { @apply transition-[transform,box-shadow,background-color] duration-200; }
+    .info-box-link:hover .info-box { @apply -translate-y-0.5 bg-white shadow-[0_4px_12px_rgba(61,66,29,.18)]; }
+    .info-box-icon { @apply transition-transform duration-200; }
+    .info-box-link:hover .info-box-icon { @apply scale-110; }
+
+    .modal-content { @apply rounded-lg shadow-[0_10px_30px_rgba(0,0,0,.25)]; }
+    .badge { @apply tracking-[.02em]; }
+}
+
+@layer base {
+    * { scrollbar-width: thin; scrollbar-color: rgb(111 120 68 / .45) transparent; }
+    ::selection { background: rgb(188 191 75 / .45); }
+}
