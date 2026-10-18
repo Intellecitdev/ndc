@@ -24,7 +24,5 @@ Homestead.yaml
 Thumbs.db
 
 # Database dumps, archives and backups never go into git
-*.sql
-*.sql.gz
 *.zip
 /storage/app/backups
